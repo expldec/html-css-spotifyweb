@@ -12,18 +12,97 @@
     <title>Spotify</title>
 </head>
 <body>
-    <div class="top">
-        <div class="sidebar">
-
+    <div id="top">
+        <div id="sidebar">
+            <div class="logo">
+                <img src="img/logo.svg" alt="">
+            </div>
+            <div id="nav">
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <img src="img/home.svg" alt="">
+                            <span class="label">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="img/search.svg" alt="">
+                            <span class="label">Cerca</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="img/libreria.svg" alt="">
+                            <span class="label">La tua libreria</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="playlist-header">
+                <h2>PLAYLIST</h2>
+                <div id="create-playlist">
+                    <a href="#">
+                    <span class="add-icon">+</span>
+                    Crea Playlist
+                    </a>
+                </div>
+            </div>
+            <div id="playlist-list">
+                <ul>
+                    <li><a href="#">Nome Playlist</a></li>
+                    <li><a href="#">Nome Playlist</a></li>
+                    <li><a href="#">Nome Playlist</a></li>
+                    <li><a href="#">Nome Playlist</a></li>
+                    <li><a href="#">Nome Playlist</a></li>
+                    <li><a href="#">Nome Playlist</a></li>
+                    <li><a href="#">Nome Playlist</a></li>
+                </ul>
+            </div>
+            <div id="sidebar-bottom">
+                <div class="download-link">
+                    <a href="#">
+                        <img src="img/download.svg" alt="">
+                        <span>Installa app</span>
+                    </a>
+                </div>
+                <div class="separator"></div>
+                <div class="profile">
+                    <span class="profile-pic"></span>
+                    <span class="profile-name">John Doe</span>
+                </div>
+            </div>
         </div>
-        <div class="content">
-            <div class="banner-overlay">
+        <div id="content">
+            <div id="banner-overlay">
                 <div id="upgrade-btn">
                     Effettua l'upgrade
                 </div>
             </div>
+            <div id="top-spacer"></div>
+            <div id="categories">
+                <ul>
+                    <li class="active"><a href="#">In evidenza</a></li>
+                    <li><a href="#">Podcast</a></li>
+                    <li><a href="#">Classifiche</a></li>
+                    <li><a href="#">Generi e Mood</a></li>
+                    <li><a href="#">Nuove uscite</a></li>
+                    <li><a href="#">Scopri</a></li>
+                </ul>
+            </div>
+            <div id="recently-played">
+                <h2>Recently Played</h2>
+            </div>
+            <div id="for-you">
+                <h2>Creato per John Doe</h2>
+                <h3>Più ascolti, più accurati saranno i suggerimenti.</h3>
+            </div>
+            <div id="top-artists">
+                <h2>Artisti più popolari</h2>
+                <h3>Più ascolti, più accurati saranno i suggerimenti.</h3>
+            </div>
         </div>
     </div>
-    <div class="bottom"></div>
+    <div id="bottom"></div>
 </body>
 </html>

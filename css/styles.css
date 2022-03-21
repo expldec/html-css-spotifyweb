@@ -5,32 +5,180 @@
     box-sizing: border-box;
 }
 
+/* COMMON */
+
 body {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: #a3a3a3;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
 
 /* TOP */
-.top {
+#top {
     display: flex;
     width: 100%;
     height: calc(100vh - 5rem);
 }
 
-.sidebar {
+
+/* SIDEBAR COMMON */
+#sidebar {
     width: 15rem;
+    height: 100%;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
 }
 
-.content {
+#sidebar > div {
+    padding: 1rem;
+    width: 100%;
+}
+
+#sidebar h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+#sidebar li {
+    padding: 0.5rem 1rem;
+    border-left: 3px solid transparent;
+}
+
+/* SIDEBAR LOGO */
+#sidebar .logo img {
+    height: 3rem;
+}
+
+/* SIDEBAR NAV */
+
+#nav {
+    padding: 0;
+}
+
+#nav img {
+    height: 1.5em;
+    vertical-align: middle;
+}
+
+#nav li.active {
+    border-left: 3px solid #adff2f;
+    color: #cecece;
+}
+
+
+/* SIDEBAR PLAYLIST */
+#sidebar #playlist-header {
+    padding-bottom: 0;
+}
+
+#sidebar #playlist-list {
+    padding-top: 0;
+    overflow-y: auto;
+    min-height: 5rem;
+}
+
+#create-playlist {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.add-icon {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 2rem;
+    vertical-align: middle;
+    background-color: #a3a3a3;
+    color: black;
+}
+
+#create-playlist:hover .add-icon {
+    background-color: white;
+}
+#create-playlist:hover a {
+    color: white;
+}
+
+
+/* SIDEBAR BOTTOM */
+#sidebar-bottom {
+    margin-top: auto;
+}
+
+.download-link img {
+    height: 1rem;
+    vertical-align: middle;
+}
+
+#sidebar-bottom .separator {
+    background-color:#a3a3a3;
+    height: 1px;
+    margin: 0.8rem 0;
+}
+
+.profile-pic {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: #a3a3a3;
+    background-image: url('../img/profile.svg');
+    background-size: cover;
+    vertical-align: middle;
+}
+
+.profile-name {
+    color: white;
+    font-weight: 600;
+}
+
+
+/* MAIN CONTENT DIV */
+/* COMMON */
+#content {
     background-color: #141922;
     width: calc(100% - 15rem);
 /* altezza fissa 100vh meno l'altezza del footer */
     height: calc(100vh - 5rem);
     overflow-y: auto;
+    padding: 1rem;
 }
 
-.banner-overlay {
+#content > div {
+    padding: 0.5rem;
+}
+
+#content h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+#content h3 {
+    font-size: 0.6rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* OVERLAID BANNER */
+#banner-overlay {
     position: fixed;
     top: 0;
     left: 15rem;
@@ -53,9 +201,44 @@ body {
     text-transform: uppercase;
 }
 
+#upgrade-btn:hover {
+    transform: scale(1.1);
+}
+
+/* uso un div spaziatore per spingere il
+contenuto sotto il banner senza "sporcare"
+i div del contenuto con margini o padding
+indebiti */
+
+#top-spacer {
+    height: 6rem;
+    width: 100%;
+}
+
+#categories {
+    text-align: center;
+}
+
+#categories li {
+    display: inline-block;
+    margin: 0 0.8rem;
+    text-transform: uppercase;
+}
+
+#categories li.active::after {
+    content: '';
+    display: block;
+    margin: 0.2rem auto;
+    background-color: #adff2f;
+    width: 2rem;
+    height: 2px;
+}
+
 /* BOTTOM */
-.bottom {
+#bottom {
     width: 100%;
     height: 5rem;
     background-color: #282828;
+    position: relative;
+    z-index: 10;
 }
