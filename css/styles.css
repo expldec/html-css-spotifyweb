@@ -523,7 +523,7 @@ indebiti */
     color: white;
 }
 
-#xs-icon {
+#xs-icons {
     display: none;
 }
 
@@ -541,10 +541,6 @@ indebiti */
 /* MEDIA QUERIES BOTTOM */
 
 @media screen and (max-width: 699px) {
-    #play-info, #play-settings {
-        max-width: var(--sidebar-width);
-    }
-    
     #play-info .icons {
         flex-direction: column;
     }
