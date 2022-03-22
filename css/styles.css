@@ -10,7 +10,7 @@
 body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 80%;
     color: #a3a3a3;
 }
 
@@ -43,6 +43,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-content: flex-start;
+    overflow-y: hidden;
 }
 
 #sidebar > div {
@@ -181,6 +182,7 @@ ul {
 /* OVERLAID BANNER */
 #banner-overlay {
     position: fixed;
+    z-index: 10;
     top: 0;
     left: 15rem;
     height: 6rem;
@@ -271,6 +273,10 @@ indebiti */
     margin-top: 0.8em;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
 .card:hover .thumbnail:before {
     content: '\f144';
     font-family: "Font Awesome 5 Free";
@@ -293,6 +299,47 @@ indebiti */
     width: 100%;
     height: 5rem;
     background-color: #282828;
-    position: relative;
-    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#play-info {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+#now-playing {
+    display: flex;
+    align-items: center;
+}
+
+#now-playing .details {
+    margin-left: 0.5rem;
+}
+
+#now-playing h2 {
+    font-size: 0.8rem;
+    color: white;
+}
+#now-playing h3 {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+#play-info .thumbnail {
+    width: 3rem;
+}
+
+#play-info .thumbnail img {
+    width: 100%;
+}
+
+#play-info .buttons {
+    font-size: 1rem;
+}
+#play-info .buttons i {
+    margin: 0 0.3rem;
 }
