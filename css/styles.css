@@ -427,8 +427,9 @@ indebiti */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-grow: 1;
     padding-left: 0.5rem;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 #now-playing {
@@ -512,14 +513,18 @@ indebiti */
 /* RIGHT BOTTOM */
 
 #play-settings {
-    max-width: 15rem;
+    max-width: var(--sidebar-width);
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-grow: 1;
     padding-right: 0.5rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     color: white;
+}
+
+#xs-icon {
+    display: none;
 }
 
 #volume-bar {
@@ -544,4 +549,34 @@ indebiti */
         flex-direction: column;
     }
 
+}
+
+@media screen and (max-width: 499px) {
+    
+    #play-info {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #play-info .icons {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    #play-settings {
+        justify-content: center;
+    }
+
+    #play-settings .icons,
+    #play-settings #volume-bar {
+        display: none;
+    }
+    #play-controls .buttons .button {
+        margin: 0 0.4rem;
+    }
+
+    #play-settings #xs-icons {
+        display: block;
+        font-size: 1rem;
+    }
 }
