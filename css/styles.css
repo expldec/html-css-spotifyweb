@@ -536,7 +536,7 @@ indebiti */
 /* MEDIA QUERIES BOTTOM */
 
 @media screen and (max-width: 699px) {
-        #play-info, #play-settings {
+    #play-info, #play-settings {
         max-width: var(--sidebar-width);
     }
     
