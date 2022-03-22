@@ -1,4 +1,6 @@
 :root {
+    --sidebar-width: 14rem;
+    --sidebar-width-s: 3.5rem;
     --bar-height: 6px;
     --bar-handle-size: 16px;
 }
@@ -42,12 +44,11 @@ ul {
 
 /* SIDEBAR COMMON */
 #sidebar {
-    width: 15rem;
+    width: var(--sidebar-width);
     height: 100%;
     background-color: black;
     display: flex;
     flex-direction: column;
-    align-content: flex-start;
     overflow-y: hidden;
 }
 
@@ -61,28 +62,32 @@ ul {
     margin-bottom: 1rem;
 }
 
-#sidebar li {
-    padding: 0.5rem 1rem;
-    border-left: 3px solid transparent;
-}
-
 /* SIDEBAR LOGO */
 #sidebar .logo img {
     height: 3rem;
 }
 
+#logo-small {
+    display: none;
+}
+
 /* SIDEBAR NAV */
 
-#nav {
+#sidebar #nav {
     padding: 0;
 }
 
-#nav img {
+#sidebar #nav li {
+    padding: 0.5rem 1rem;
+    border-left: 3px solid transparent;
+}
+
+#sidebar #nav img {
     height: 1.5em;
     vertical-align: middle;
 }
 
-#nav li.active {
+#sidebar #nav li.active {
     border-left: 3px solid #adff2f;
     color: #cecece;
 }
@@ -91,6 +96,10 @@ ul {
 /* SIDEBAR PLAYLIST */
 #sidebar #playlist-header {
     padding-bottom: 0;
+}
+
+#sidebar #playlist-header h2 {
+    font-size: 0.8rem;
 }
 
 #sidebar #playlist-list {
@@ -123,6 +132,10 @@ ul {
     color: white;
 }
 
+#sidebar #playlist-list li {
+    padding: 0.5rem 0;
+    border-left: 3px solid transparent;
+}
 
 /* SIDEBAR BOTTOM */
 #sidebar-bottom {
@@ -156,12 +169,50 @@ ul {
     font-weight: 600;
 }
 
+/* SIDEBAR MEDIA QUERIES  */
+@media screen  and (max-width: 599px) {
+    #sidebar {
+        width: var(--sidebar-width-s);
+        align-items: center;
+    }
+
+    #sidebar > div {
+        padding: 0.5rem;
+        width: auto;
+    }
+
+    #logo-big,
+    #sidebar .label,
+    #sidebar .separator,
+    #playlist-header,
+    #playlist-list,
+    .profile-name {
+        display: none;
+    }
+
+    #sidebar #logo-small {
+        display: inline-block;
+        padding: 0.5rem;
+        height: auto;
+        width: 100%;
+    }
+
+    #sidebar #nav li,
+    #sidebar #nav li.active {
+        border: 0;
+    }
+    .download-link {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+}
+
 
 /* MAIN CONTENT DIV */
 /* COMMON */
 #content {
     background-color: #141922;
-    width: calc(100% - 15rem);
+    width: calc(100% - var(--sidebar-width));
 /* altezza fissa 100vh meno l'altezza del footer */
     height: calc(100vh - 5rem);
     overflow-y: auto;
@@ -189,9 +240,9 @@ ul {
     position: fixed;
     z-index: 10;
     top: 0;
-    left: 15rem;
+    left: var(--sidebar-width);
     height: 6rem;
-    width: calc(100% - 15rem);
+    width: calc(100% - var(--sidebar-width));
     background-color: rgba(0,0,0, 0.5);
     display: flex;
     justify-content: flex-end;
@@ -213,6 +264,14 @@ ul {
     transform: scale(1.1);
 }
 
+@media screen  and (max-width: 599px) {
+    #banner-overlay, #content {
+        width: calc(100% - var(--sidebar-width-s));
+    }
+    #banner-overlay {
+        left: var(--sidebar-width-s);
+    }
+}
 /* uso un div spaziatore per spingere il
 contenuto sotto il banner senza "sporcare"
 i div del contenuto con margini o padding
@@ -245,11 +304,12 @@ indebiti */
 .card-container {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .card {
     width: calc(100% / 6 - 1rem);
-    margin: 0 0.5rem;
+    margin: 0 0.5rem 0.5rem;
 }
 
 .card img {
@@ -299,6 +359,19 @@ indebiti */
     left: 0;
 }
 
+@media screen  and (max-width: 1099px) {
+    .card {
+        width: calc(100% / 4 - 1rem);
+    }
+}
+
+@media screen  and (max-width: 699px) {
+    .card {
+        width: calc(100% / 2 - 1rem);
+    }
+}
+
+
 /* BOTTOM */
 #bottom {
     width: 100%;
@@ -307,6 +380,11 @@ indebiti */
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#bottom .icons {
+    display: flex;
+    flex-direction: row;
 }
 
 #bottom .icons i {
@@ -345,7 +423,7 @@ indebiti */
 
 /* LEFT BOTTOM */
 #play-info {
-    width: 15rem;
+    max-width: var(--sidebar-width);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -382,11 +460,7 @@ indebiti */
     font-size: 1rem;
 }
 
-@media screen and (max-width: 700px) {
-    #bottom {
-        background-color: red;
-    }
-}
+
 
 /* CENTER BOTTOM */
 
@@ -400,13 +474,17 @@ indebiti */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 15rem;
     font-size: 1rem;
     color: white;
 }
 
+#play-controls .buttons .button {
+    margin: 0 0.5rem;
+}
+
 #play-controls .buttons #play-pause {
     font-size: 1.8rem;
+    margin: 0 0.8rem;
 }
 #play-controls .buttons #play-pause:hover {
     transform: scale(1.1);
@@ -434,19 +512,39 @@ indebiti */
 /* RIGHT BOTTOM */
 
 #play-settings {
-    width: 15rem;
+    max-width: 15rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    flex-grow: 1;
     padding-right: 0.5rem;
     margin-left: 1rem;
     color: white;
 }
 
 #volume-bar {
-    width: 8rem;
+    min-width: 3rem;
+    max-width: 8rem;
+    margin-left: 0.5rem;
+    flex-grow: 1;
 }
 
 #current-volume {
     width:25%;
+}
+
+/* MEDIA QUERIES BOTTOM */
+
+@media screen and (max-width: 699px) {
+    #bottom {
+        background-color: red;
+    }
+    #play-info, #play-settings {
+        max-width: var(--sidebar-width);
+    }
+    
+    #play-info .icons {
+        flex-direction: column;
+    }
+
 }
