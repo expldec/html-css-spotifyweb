@@ -449,6 +449,12 @@ indebiti */
     font-size: 0.7rem;
     font-weight: 500;
 }
+
+#now-playing h3 a:hover {
+    text-decoration: underline;
+}
+
+
 #play-info .thumbnail {
     width: 3rem;
 }
