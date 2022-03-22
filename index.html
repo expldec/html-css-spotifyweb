@@ -191,13 +191,51 @@
                     <h3>Brano Nome</h3>
                 </div>
             </div>
-            <div class="buttons">
+            <div class="icons">
                 <a href="#"><i class="far fa-heart"></i></a>
                 <a href="#"><i class="far fa-folder"></i></a>
             </div>
         </div>
-        <div id="play-controls"></div>
-        <div id="play-settings"></div>
+        <div id="play-controls">
+            <div class="buttons">
+                <div class="button">
+                    <i class="fas fa-random"></i>
+                </div>
+                <div class="button">
+                    <i class="fas fa-step-backward"></i>
+                </div>
+                <div id="play-pause" class="button">
+                    <i class="far fa-play-circle"></i>
+                </div>
+                <div class="button">
+                    <i class="fas fa-step-forward"></i>
+                </div>
+                <div class="button">
+                    <i class="fas fa-redo"></i>
+                </div>
+            </div>
+            <div id="progress">
+                <div id="current-time">
+                    0:25
+                </div>
+                <div class="bar" id="progress-bar">
+                    <div class="sub-bar" id="current-progress"></div>
+                </div>
+                <div id="play-duration">
+                    4:35
+                </div>
+            </div>
+        </div>
+        <div id="play-settings">
+            <div class="icons">
+                <i class="fas fa-list"></i>
+                <i class="fas fa-desktop"></i>
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <div class="bar" id="volume-bar">
+                <div class="sub-bar" id="current-volume"></div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,3 +1,8 @@
+:root {
+    --bar-height: 6px;
+    --bar-handle-size: 16px;
+}
+
 /* RESET */
 * {
     margin: 0;
@@ -304,12 +309,48 @@ indebiti */
     align-items: center;
 }
 
+#bottom .icons i {
+    margin: 0 0.3rem;
+}
+
+.bar,.sub-bar {
+    height: var(--bar-height);
+    border-radius: 3px;
+}
+
+.bar {
+    background-color: #5a5a5a;
+}
+
+.sub-bar {
+    background-color: #c1c1c1;
+    position: relative;
+}
+
+.bar:hover .sub-bar {
+    background-color: #adff2f; 
+}
+
+.bar:hover .sub-bar::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--bar-height) / 2 - var(--bar-handle-size) / 2);
+    right: calc(0rem - var(--bar-handle-size) / 2);
+    height: var(--bar-handle-size);
+    width: var(--bar-handle-size);
+    border-radius: 0.5rem;
+    background-color: white; 
+}
+
+
+/* LEFT BOTTOM */
 #play-info {
     width: 15rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 0.5rem;
+    margin-right: 1rem;
 }
 
 #now-playing {
@@ -337,9 +378,75 @@ indebiti */
     width: 100%;
 }
 
-#play-info .buttons {
+#play-info .icons {
     font-size: 1rem;
 }
-#play-info .buttons i {
-    margin: 0 0.3rem;
+
+@media screen and (max-width: 700px) {
+    #bottom {
+        background-color: red;
+    }
+}
+
+/* CENTER BOTTOM */
+
+#play-controls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#play-controls .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 15rem;
+    font-size: 1rem;
+    color: white;
+}
+
+#play-controls .buttons #play-pause {
+    font-size: 1.8rem;
+}
+#play-controls .buttons #play-pause:hover {
+    transform: scale(1.1);
+}
+
+#progress {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: white;
+}
+
+#progress-bar {
+    width: 25vw;
+    margin: 0 0.5rem;
+}
+
+#current-progress {
+    top:0;
+    left: 0;
+    width: 11%;
+}
+
+/* RIGHT BOTTOM */
+
+#play-settings {
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 0.5rem;
+    margin-left: 1rem;
+    color: white;
+}
+
+#volume-bar {
+    width: 8rem;
+}
+
+#current-volume {
+    width:25%;
 }
