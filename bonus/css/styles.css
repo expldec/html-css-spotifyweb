@@ -1,8 +1,10 @@
 :root {
     --sidebar-width: 14rem;
     --sidebar-width-s: 3.5rem;
-    --bar-height: 6px;
-    --bar-handle-size: 16px;
+    --footer-side-width-s: 7rem;
+    --bar-thickness: 6px;
+    --bar-handle-size: 12px;
+    --bottom-height: 5rem;
 }
 
 /* RESET */
@@ -170,7 +172,7 @@ ul {
 }
 
 /* SIDEBAR MEDIA QUERIES  */
-@media screen  and (max-width: 599px) {
+@media screen  and (max-width: 768px) {
     #sidebar {
         width: var(--sidebar-width-s);
         align-items: center;
@@ -264,7 +266,7 @@ ul {
     transform: scale(1.1);
 }
 
-@media screen  and (max-width: 599px) {
+@media screen  and (max-width: 768px) {
     #banner-overlay, #content {
         width: calc(100% - var(--sidebar-width-s));
     }
@@ -272,6 +274,14 @@ ul {
         left: var(--sidebar-width-s);
     }
 }
+
+/* BONUS */
+@media screen  and (max-height: 450px) {
+    #banner-overlay, #top-spacer {
+        display: none;
+    }
+}
+
 /* uso un div spaziatore per spingere il
 contenuto sotto il banner senza "sporcare"
 i div del contenuto con margini o padding
@@ -375,25 +385,34 @@ indebiti */
 /* BOTTOM */
 #bottom {
     width: 100%;
-    height: 5rem;
+    height: var(--bottom-height);
     background-color: #282828;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#bottom .icons {
+#bottom .icons,
+#bottom #volume-control {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-#bottom .icons i {
+#bottom .icons i,
+#bottom #volume-control i {
     margin: 0 0.3rem;
 }
 
-.bar,.sub-bar {
-    height: var(--bar-height);
+#play-info, #play-controls, #play-settings {
+    height: 100%;
+}
+
+
+/* BARS  */
+.bar, .sub-bar {
     border-radius: 3px;
+    position: relative;
 }
 
 .bar {
@@ -402,17 +421,30 @@ indebiti */
 
 .sub-bar {
     background-color: #c1c1c1;
-    position: relative;
 }
 
 .bar:hover .sub-bar {
     background-color: #adff2f; 
 }
 
-.bar:hover .sub-bar::after {
+.bar.horizontal, .sub-bar.horizontal {
+    height: var(--bar-thickness);
+}
+
+.bar.vertical, .sub-bar.vertical {
+    width: var(--bar-thickness);
+}
+
+.sub-bar.vertical {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bar:hover .sub-bar.horizontal::after {
     content: '';
     position: absolute;
-    top: calc(var(--bar-height) / 2 - var(--bar-handle-size) / 2);
+    top: calc(var(--bar-thickness) / 2 - var(--bar-handle-size) / 2);
     right: calc(0rem - var(--bar-handle-size) / 2);
     height: var(--bar-handle-size);
     width: var(--bar-handle-size);
@@ -474,6 +506,7 @@ indebiti */
 #play-controls{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -520,6 +553,7 @@ indebiti */
 
 #play-settings {
     max-width: var(--sidebar-width);
+    position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -529,59 +563,146 @@ indebiti */
     color: white;
 }
 
-#xs-icons {
-    display: none;
-}
-
 #volume-bar {
-    min-width: 3rem;
+    min-width: 5rem;
     max-width: 8rem;
     margin-left: 0.5rem;
     flex-grow: 1;
 }
 
-#current-volume {
+.sub-bar.horizontal.volume {
     width:25%;
 }
 
-/* MEDIA QUERIES BOTTOM */
+/* BONUS */
 
-@media screen and (max-width: 699px) {
-    #play-info .icons {
-        flex-direction: column;
-    }
-
+#desktop-icons {
+    display: flex;
+    align-items: center;
 }
 
-@media screen and (max-width: 499px) {
-    
-    #play-info {
-        flex-direction: column;
-        align-items: stretch;
+#tablet-icons {
+    display: none;
+}
+
+#volume-button {
+    width: 3rem;
+    height: 3rem;
+    background-color: #414141;
+    border-radius: 0.5rem;
+    padding: 0.4rem 0.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.bar.vertical.volume {
+    height: 2.5rem;
+}
+
+.sub-bar.vertical.volume {
+    height: 25%;
+}
+
+.bar:hover .sub-bar.vertical::after {
+    content: '';
+    position: absolute;
+    right: calc(var(--bar-thickness) / 2 - var(--bar-handle-size) / 2);
+    top: calc(0rem - var(--bar-handle-size) / 2);
+    height: var(--bar-handle-size);
+    width: var(--bar-handle-size);
+    border-radius: 0.5rem;
+    background-color: white; 
+}
+
+
+/* MEDIA QUERIES BOTTOM */
+
+@media screen and (max-width: 768px) {
+    #play-settings, #play-info {
+        max-width: var(--footer-side-width-s);
+
     }
 
+    #play-info {
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+        margin-right: 0;
+    }
+
+    
     #play-info .icons {
         flex-direction: row;
         justify-content: space-evenly;
     }
 
-    #play-settings {
-        justify-content: center;
+    #play-controls .button {
+        margin: 0 0.2rem;
+    }
+    #play-controls .button#play-pause {
+        margin: 0 0.3rem;
     }
 
-    #play-settings .icons {
+    #play-settings .icons,
+    #play-settings #volume-control {
+        display: none;
+    }
+
+    #play-settings #tablet-icons {
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+    }
+    #play-settings #tablet-icons > i {
+        margin-right: 0.8rem;
+    }
+
+    #play-settings .volume-bar-vertical {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+
+    #play-settings {
+        justify-content: flex-end;
+    }
+
+    #play-info .details,
+    #play-info .icons {
         display: none;
     }
     
-    #play-settings #volume-bar {
+    #volume-button,
+    #desktop-icons {
         display: none;
     }
-    #play-controls .buttons .button {
-        margin: 0 0.4rem;
+
+    #tablet-icons:hover + #desktop-icons {
+        background-color: #414141;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 1rem;
+        height: 3rem;
+        border-radius: 0.5rem;
+        position: absolute;
+        bottom: var(--bottom-height);
+        right: 0;
     }
 
-    #play-settings #xs-icons {
-        display: block;
-        font-size: 1rem;
+    #play-settings .icons,
+    #play-settings #volume-control {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    }
+    #bottom #volume-control {
+        order: -1;
     }
 }

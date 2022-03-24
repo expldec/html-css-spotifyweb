@@ -219,8 +219,8 @@
                 <div id="current-time">
                     0:25
                 </div>
-                <div class="bar" id="progress-bar">
-                    <div class="sub-bar" id="current-progress"></div>
+                <div class="bar horizontal" id="progress-bar">
+                    <div class="sub-bar horizontal" id="current-progress"></div>
                 </div>
                 <div id="play-duration">
                     4:35
@@ -228,17 +228,26 @@
             </div>
         </div>
         <div id="play-settings">
-            <div id="xs-icons">
-                <i class="fas fa-volume-up"></i>
-                <i class="fas fa-ellipsis-h"></i>
+            <div id="tablet-icons">
+                <i class="fas fa-bars"></i>
+                <div id="volume-button">
+                    <i class="fas fa-volume-up"></i>
+                    <div class="bar vertical volume">
+                        <div class="sub-bar vertical volume"></div>
+                    </div>
+                </div>
             </div>
-            <div class="icons">
-                <i class="fas fa-list"></i>
-                <i class="fas fa-desktop"></i>
-                <i class="fas fa-volume-up"></i>
-            </div>
-            <div class="bar" id="volume-bar">
-                <div class="sub-bar" id="current-volume"></div>
+            <div id="desktop-icons">
+                <div class="icons">
+                    <i class="fas fa-list"></i>
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div id="volume-control">
+                    <i class="fas fa-volume-up"></i>
+                    <div class="bar horizontal" id="volume-bar">
+                        <div class="sub-bar horizontal volume"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
